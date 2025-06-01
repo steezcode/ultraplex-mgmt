@@ -1,8 +1,19 @@
 import { Routes } from '@angular/router';
+import { provideEffects } from '@ngrx/effects';
+import { provideState, Store } from '@ngrx/store';
+import { inject } from '@angular/core';
+
+import * as fromCore from './_core/store';
+import * as CoreActions from './_core/store/core.actions';
 
 export const routes: Routes = [
   {
     path: '',
+    providers: [
+      provideState(fromCore.coreFeatureKey, fromCore.reducer),
+      provideEffects(fromCore.CoreEffects),
+    ],
+    resolve: [() => inject(Store).dispatch(CoreActions.retrieveCoreData())],
     children: [
       {
         path: 'dashboard',

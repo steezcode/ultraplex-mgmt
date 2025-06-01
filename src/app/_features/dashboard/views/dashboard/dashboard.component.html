@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  @for(card of cards; track card.title) {
+  <app-dashboard-card [data]="card"></app-dashboard-card>
+  }
+</div>

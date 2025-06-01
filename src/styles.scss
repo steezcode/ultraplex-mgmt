@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@use "./assets/styles/index";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.layout-container {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+body {
+  background-color: var(--background-color);
+}

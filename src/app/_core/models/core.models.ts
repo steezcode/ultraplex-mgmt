@@ -1,8 +1,7 @@
 export interface CinemaData {
   id: number;
   name: string;
-  screens: Screen[];
-  totalScreens: number;
+  screens: ScreenData[];
 }
 
 export interface MovieData {

@@ -1,3 +1,5 @@
+import { ScreenData } from '../../_core/models/core.models';
+
 export interface CinemasResponse {
   content: Cinema[];
 }
@@ -5,7 +7,7 @@ export interface CinemasResponse {
 export interface Cinema {
   id: number;
   name: string;
-  screens: Screen[];
+  screens: ScreenData[];
   totalScreens: number;
 }
 

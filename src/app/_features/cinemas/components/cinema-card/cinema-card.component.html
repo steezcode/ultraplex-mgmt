@@ -1,0 +1,16 @@
+<div class="cinema-card">
+  <p>{{ cinemaData.name }}</p>
+
+  <div class="screens">
+    @if(cinemaData.screens && cinemaData.screens.length > 0) {
+    <p>
+      Available Screens:
+        @for (screen of cinemaData.screens; track screen.id) {
+        <p>{{ screen.name }}</p>
+        }
+    </p>
+    } @else {
+    <p>No screens available</p>
+    } 
+  </div>
+</div>

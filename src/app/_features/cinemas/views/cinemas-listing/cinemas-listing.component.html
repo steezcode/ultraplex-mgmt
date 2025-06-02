@@ -1,1 +1,9 @@
-<p>cinemas-listing works!</p>
+@if(vm$ | async; as vm) {
+<div class="cinemas-wrapper">
+  @for(cinema of vm.cinemas; track cinema.id) {
+  <app-cinema-card [cinemaData]="cinema"></app-cinema-card>
+  }
+</div>
+} @else {
+<p>Loading cinemas...</p>
+}

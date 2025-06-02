@@ -3,8 +3,17 @@
   display: block;
   margin: auto;
   background-color: var(--primary-color);
-  color: var(--white-color);
   border-radius: 4px;
   box-shadow: var(--box-shadow);
-  padding: 50px;
+  padding: 2rem 3rem;
+}
+
+.cinema-card .name {
+  margin-bottom: 1rem;
+}
+
+.cinema-card .name,
+.cinema-card .screens-list,
+.cinema-card .screen-name {
+  color: var(--white-color);
 }

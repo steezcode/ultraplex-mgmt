@@ -33,3 +33,15 @@ export const retrieveBookingsFailure = createAction(
   '[Core] Retrieve Bookings Failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const addCinema = createAction(
+  '[Core] Add Cinema',
+  props<{ name: string }>()
+);
+
+export const addCinemaSuccess = createAction('[Core] Add Cinema Success');
+
+export const addCinemaFailure = createAction(
+  '[Core] Add Cinema Failure',
+  props<{ error: HttpErrorResponse }>()
+);

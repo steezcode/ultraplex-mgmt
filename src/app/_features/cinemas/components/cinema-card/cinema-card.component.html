@@ -1,12 +1,12 @@
 <div class="cinema-card">
-  <p>{{ cinemaData.name }}</p>
+  <h3 class="name">{{ cinemaData.name }}</h3>
 
   <div class="screens">
     @if(cinemaData.screens && cinemaData.screens.length > 0) {
-    <p>
+    <p class="screens-list">
       Available Screens:
         @for (screen of cinemaData.screens; track screen.id) {
-        <p>{{ screen.name }}</p>
+        <p class="screen-name">{{ screen.name }}</p>
         }
     </p>
     } @else {

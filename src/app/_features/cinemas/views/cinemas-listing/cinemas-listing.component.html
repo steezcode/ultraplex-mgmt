@@ -1,3 +1,8 @@
+<div class="cinemas-listing-header">
+  <h1>Cinemas</h1>
+  <button (click)="cinemaModalOpened = true">Add a cinema</button>
+</div>
+
 @if(vm$ | async; as vm) {
 <div class="cinemas-wrapper">
   @for(cinema of vm.cinemas; track cinema.id) {
@@ -6,4 +11,8 @@
 </div>
 } @else {
 <p>Loading cinemas...</p>
+} @if(cinemaModalOpened) {
+<app-add-cinema-modal
+  (closeModal)="cinemaModalOpened = false"
+></app-add-cinema-modal>
 }

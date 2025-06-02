@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CinemaData, ScreenData } from '../../../../_core/models/core.models';
+import { CinemaData } from '../../../../_core/models/core.models';
 
 @Component({
   selector: 'app-cinema-card',
@@ -9,8 +9,4 @@ import { CinemaData, ScreenData } from '../../../../_core/models/core.models';
 })
 export class CinemaCardComponent {
   @Input() cinemaData!: CinemaData;
-
-  ngOnInit() {
-    console.log(this.cinemaData);
-  }
 }

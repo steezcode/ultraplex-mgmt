@@ -30,4 +30,8 @@ export class ApiHttpService {
   getBookings(): Observable<BookingResponse> {
     return this.httpClient.get<BookingResponse>(`${this.baseUrl}/bookings`);
   }
+
+  addCinema(name: string): Observable<any> {
+    return this.httpClient.put(`${this.baseUrl}/cinemas`, { name });
+  }
 }

@@ -1,0 +1,17 @@
+<div class="overlay">
+  <dialog class="add-cinema-modal">
+    <div class="header">
+      <h2>Add a cinema</h2>
+      <button type="button" class="close-cta" (click)="onClose()">X</button>
+    </div>
+
+    <form [formGroup]="cinemaForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" required />
+      </div>
+
+      <button type="submit">Add cinema</button>
+    </form>
+  </dialog>
+</div>

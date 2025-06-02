@@ -13,7 +13,7 @@ export class CoreEffects {
 
   retrieveCinemas$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
-      ofType(CoreActions.retrieveCoreData),
+      ofType(CoreActions.retrieveCoreData, CoreActions.addCinemaSuccess),
       switchMap(() => {
         return this.apiHttpService.getCinemas().pipe(
           switchMap((cinemas) => [
@@ -57,6 +57,20 @@ export class CoreEffects {
           ]),
           catchError((error) => [
             CoreActions.retrieveBookingsFailure({ error: error }),
+          ])
+        );
+      })
+    )
+  );
+
+  addCinema$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CoreActions.addCinema),
+      switchMap((action) => {
+        return this.apiHttpService.addCinema(action.name).pipe(
+          switchMap(() => [CoreActions.addCinemaSuccess()]),
+          catchError((error) => [
+            CoreActions.retrieveCinemasFailure({ error: error }),
           ])
         );
       })

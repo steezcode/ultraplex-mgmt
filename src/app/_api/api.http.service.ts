@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { CinemasResponse } from './models/api.interface';
+import {
+  BookingResponse,
+  CinemasResponse,
+  MoviesResponse,
+} from './models/api.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,15 +19,15 @@ export class ApiHttpService {
     return this.httpClient.get<CinemasResponse>(`${this.baseUrl}/cinemas`);
   }
 
-  getMovies(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/movies`);
+  getMovies(): Observable<MoviesResponse> {
+    return this.httpClient.get<MoviesResponse>(`${this.baseUrl}/movies`);
   }
 
   getScreens(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/screens`);
   }
 
-  getBookings(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/bookings`);
+  getBookings(): Observable<BookingResponse> {
+    return this.httpClient.get<BookingResponse>(`${this.baseUrl}/bookings`);
   }
 }

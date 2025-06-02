@@ -1,6 +1,5 @@
 export interface CinemasResponse {
   content: Cinema[];
-  totalElements: number;
 }
 
 export interface Cinema {
@@ -8,4 +7,24 @@ export interface Cinema {
   name: string;
   screens: Screen[];
   totalScreens: number;
+}
+
+export interface MoviesResponse {
+  content: Movie[];
+}
+
+export interface Movie {
+  id: number;
+  name: string;
+  runtime: Date;
+}
+
+export interface BookingResponse {
+  content: Booking[];
+}
+
+export interface Booking {
+  id: number;
+  screenId: number;
+  seat: number;
 }

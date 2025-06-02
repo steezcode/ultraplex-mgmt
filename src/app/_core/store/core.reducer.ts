@@ -18,27 +18,39 @@ export const coreFeatureKey: 'core' = 'core';
 
 export interface CoreState {
   cinemas: EntityState<CinemaData>;
-  screens: EntityState<ScreenData>;
   movies: EntityState<MovieData>;
   bookings: EntityState<BookingData>;
 }
 
 export const initialCoreState: CoreState = {
   cinemas: cinemasEntityAdapter.getInitialState(),
-  screens: screensEntityAdapter.getInitialState(),
   movies: moviesEntityAdapter.getInitialState(),
   bookings: bookingsEntityAdapter.getInitialState(),
 };
 
 const coreReducer: ActionReducer<CoreState> = createReducer<CoreState>(
-  initialCoreState
+  initialCoreState,
 
-  // on(CoreActions.retrieveCinemasSuccess, (state, { cinemaData }) => {
-  //   return {
-  //     ...state,
-  //     cinemas: cinemasEntityAdapter.setAll(cinemaData, state.cinemas),
-  //   };
-  // })
+  on(CoreActions.retrieveCinemasSuccess, (state, { cinemasData }) => {
+    return {
+      ...state,
+      cinemas: cinemasEntityAdapter.setAll(cinemasData, state.cinemas),
+    };
+  }),
+
+  on(CoreActions.retrieveMoviesSuccess, (state, { moviesData }) => {
+    return {
+      ...state,
+      movies: moviesEntityAdapter.setAll(moviesData, state.movies),
+    };
+  }),
+
+  on(CoreActions.retrieveBookingsSuccess, (state, { bookingsData }) => {
+    return {
+      ...state,
+      bookings: bookingsEntityAdapter.setAll(bookingsData, state.bookings),
+    };
+  })
 );
 
 export function reducer(state: CoreState | undefined, action: any): CoreState {

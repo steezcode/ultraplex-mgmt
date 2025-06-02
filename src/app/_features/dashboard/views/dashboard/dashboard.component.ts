@@ -3,6 +3,12 @@ import {
   DashboardCardComponent,
   DashboardCard,
 } from '../../components/dashboard-card/dashboard-card.component';
+import { Observable } from 'rxjs';
+import {
+  DashboardViewModel,
+  selectDashboardViewModel,
+} from './dashboard.selector';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,22 +17,34 @@ import {
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
+  vm$!: Observable<DashboardViewModel>;
   cards: DashboardCard[] = [
     {
       title: 'Cinemas',
-      value: 12,
+      value: 0,
     },
     {
       title: 'Screens',
-      value: 50,
+      value: 0,
     },
     {
       title: 'Movies',
-      value: 20,
+      value: 0,
     },
     {
       title: 'Bookings',
-      value: 150,
+      value: 0,
     },
   ];
+
+  constructor(private store: Store) {
+    this.vm$ = this.store.select(selectDashboardViewModel);
+
+    this.vm$.subscribe((vm) => {
+      this.cards[0].value = vm.numberOfCinemas;
+      this.cards[1].value = vm.numberOfScreens;
+      this.cards[2].value = vm.numberOfMovies;
+      this.cards[3].value = vm.numberOfBookings;
+    });
+  }
 }

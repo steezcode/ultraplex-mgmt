@@ -17,7 +17,9 @@ export class CoreEffects {
       switchMap(() => {
         return this.apiHttpService.getCinemas().pipe(
           switchMap((cinemas) => [
-            CoreActions.retrieveCinemasSuccess({ cinemaData: cinemas.content }),
+            CoreActions.retrieveCinemasSuccess({
+              cinemasData: cinemas.content,
+            }),
           ]),
           catchError((error) => [
             CoreActions.retrieveCinemasFailure({ error: error }),
@@ -33,26 +35,10 @@ export class CoreEffects {
       switchMap(() => {
         return this.apiHttpService.getMovies().pipe(
           switchMap((movies) => [
-            CoreActions.retrieveCinemasSuccess({ cinemaData: movies }),
+            CoreActions.retrieveMoviesSuccess({ moviesData: movies.content }),
           ]),
           catchError((error) => [
-            CoreActions.retrieveCinemasFailure({ error: error }),
-          ])
-        );
-      })
-    )
-  );
-
-  retrieveScreens$: Observable<Action> = createEffect(() =>
-    this.actions$.pipe(
-      ofType(CoreActions.retrieveCoreData),
-      switchMap(() => {
-        return this.apiHttpService.getScreens().pipe(
-          switchMap((screens) => [
-            CoreActions.retrieveCinemasSuccess({ cinemaData: screens }),
-          ]),
-          catchError((error) => [
-            CoreActions.retrieveCinemasFailure({ error: error }),
+            CoreActions.retrieveMoviesFailure({ error: error }),
           ])
         );
       })
@@ -65,10 +51,12 @@ export class CoreEffects {
       switchMap(() => {
         return this.apiHttpService.getBookings().pipe(
           switchMap((bookings) => [
-            CoreActions.retrieveCinemasSuccess({ cinemaData: bookings }),
+            CoreActions.retrieveBookingsSuccess({
+              bookingsData: bookings.content,
+            }),
           ]),
           catchError((error) => [
-            CoreActions.retrieveCinemasFailure({ error: error }),
+            CoreActions.retrieveBookingsFailure({ error: error }),
           ])
         );
       })

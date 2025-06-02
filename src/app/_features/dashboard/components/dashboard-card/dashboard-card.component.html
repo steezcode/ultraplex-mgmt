@@ -1,4 +1,4 @@
-<div class="dashboard-card">
-  <h3>{{ data.title }}</h3>
-  <h2>{{ data.value }}</h2>
+<div class="dashboard-card" [routerLink]="data.route">
+  <p class="title">{{ data.title }}</p>
+  <p class="value">{{ data.value }}</p>
 </div>

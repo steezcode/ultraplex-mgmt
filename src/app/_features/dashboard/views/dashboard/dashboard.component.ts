@@ -22,18 +22,22 @@ export class DashboardComponent {
     {
       title: 'Cinemas',
       value: 0,
+      route: '/cinemas',
     },
     {
       title: 'Screens',
       value: 0,
+      route: '/screens',
     },
     {
       title: 'Movies',
       value: 0,
+      route: '/movies',
     },
     {
       title: 'Bookings',
       value: 0,
+      route: '/bookings',
     },
   ];
 

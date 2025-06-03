@@ -27,7 +27,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class AddMovieModalComponent {
   movieForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    runTime: new FormControl('', [
+    runtime: new FormControl('', [
       Validators.required,
       Validators.pattern(/^\d{1,3}$/),
     ]),
@@ -42,7 +42,7 @@ export class AddMovieModalComponent {
     this.store.dispatch(
       CoreActions.addMovie({
         name: this.movieForm.value.name,
-        runTime: this.movieForm.value.runTime,
+        runtime: this.movieForm.value.runtime,
       })
     );
     this.actions$

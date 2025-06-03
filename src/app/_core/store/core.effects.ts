@@ -85,7 +85,7 @@ export class CoreEffects {
     this.actions$.pipe(
       ofType(CoreActions.addMovie),
       switchMap((action) => {
-        return this.apiHttpService.addMovie(action.name, action.runTime).pipe(
+        return this.apiHttpService.addMovie(action.name, action.runtime).pipe(
           switchMap(() => [CoreActions.addMovieSuccess()]),
           catchError((error) => [CoreActions.addMovieFailure({ error: error })])
         );

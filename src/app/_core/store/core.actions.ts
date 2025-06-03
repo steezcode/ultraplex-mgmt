@@ -49,7 +49,7 @@ export const addCinemaFailure = createAction(
 
 export const addMovie = createAction(
   '[Core] Add Movie',
-  props<{ name: string; runTime: string }>()
+  props<{ name: string; runtime: string }>()
 );
 
 export const addScreen = createAction(

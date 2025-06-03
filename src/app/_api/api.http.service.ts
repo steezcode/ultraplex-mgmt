@@ -42,8 +42,8 @@ export class ApiHttpService {
     });
   }
 
-  addMovie(name: string, runTime: string): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl}/movies`, { name, runTime });
+  addMovie(name: string, runtime: string): Observable<any> {
+    return this.httpClient.put(`${this.baseUrl}/movies`, { name, runtime });
   }
 
   addScreening(

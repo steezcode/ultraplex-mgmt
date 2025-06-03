@@ -1,0 +1,29 @@
+<div class="overlay">
+  <dialog class="add-screen-modal">
+    <div class="header">
+      <h2>Add a screen</h2>
+      <button type="button" class="close-cta" (click)="onClose()">X</button>
+    </div>
+
+    <form [formGroup]="screenForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cinema">Cinema</label>
+        <select id="cinema" formControlName="cinema" type="text" required>
+          <option value="" disabled selected>Select a cinema</option>
+          @for (cinema of cinemas; track cinema.id) {
+          <option [value]="cinema.id">
+            {{ cinema.name }}
+          </option>
+          }
+        </select>
+      </div>
+
+      <button [disabled]="screenForm.invalid" type="submit">Add screen</button>
+    </form>
+  </dialog>
+</div>

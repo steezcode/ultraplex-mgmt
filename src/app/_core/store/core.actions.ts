@@ -52,6 +52,18 @@ export const addMovie = createAction(
   props<{ name: string; runTime: string }>()
 );
 
+export const addScreen = createAction(
+  '[Core] Add Screen',
+  props<{ cinemaId: string; name: string }>()
+);
+
+export const addScreenSuccess = createAction('[Core] Add Screen Success');
+
+export const addScreenFailure = createAction(
+  '[Core] Add Screen Failure',
+  props<{ error: HttpErrorResponse }>()
+);
+
 export const addMovieSuccess = createAction('[Core] Add Movie Success');
 
 export const addMovieFailure = createAction(

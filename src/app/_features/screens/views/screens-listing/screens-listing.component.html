@@ -1,5 +1,6 @@
 <div class="screens-listing-header">
   <h1>Screens</h1>
+  <button (click)="screenModalOpened = true">Add a screen</button>
 </div>
 
 @if(vm$ | async; as vm) {
@@ -8,6 +9,12 @@
   <app-screen-card [cinemaData]="cinema"></app-screen-card>
   }
 </div>
-} @else {
+
+@if(screenModalOpened) {
+<app-add-screen-modal
+  [cinemas]="vm.cinemas"
+  (closeModal)="screenModalOpened = false"
+></app-add-screen-modal>
+} } @else {
 <p>Loading screens...</p>
 }

@@ -13,7 +13,11 @@ export class CoreEffects {
 
   retrieveCinemas$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
-      ofType(CoreActions.retrieveCoreData, CoreActions.addCinemaSuccess),
+      ofType(
+        CoreActions.retrieveCoreData,
+        CoreActions.addCinemaSuccess,
+        CoreActions.addScreenSuccess
+      ),
       switchMap(() => {
         return this.apiHttpService.getCinemas().pipe(
           switchMap((cinemas) => [
@@ -101,6 +105,20 @@ export class CoreEffects {
               CoreActions.addScreeningFailure({ error: error }),
             ])
           );
+      })
+    )
+  );
+
+  addScreen$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CoreActions.addScreen),
+      switchMap((action) => {
+        return this.apiHttpService.addScreen(action.cinemaId, action.name).pipe(
+          switchMap(() => [CoreActions.addScreenSuccess()]),
+          catchError((error) => [
+            CoreActions.addScreenFailure({ error: error }),
+          ])
+        );
       })
     )
   );

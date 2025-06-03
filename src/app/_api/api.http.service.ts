@@ -36,6 +36,12 @@ export class ApiHttpService {
     return this.httpClient.put(`${this.baseUrl}/cinemas`, { name });
   }
 
+  addScreen(cinemaId: string, name: string): Observable<any> {
+    return this.httpClient.put(`${this.baseUrl}/cinemas/${cinemaId}/screens`, {
+      name,
+    });
+  }
+
   addMovie(name: string, runTime: string): Observable<any> {
     return this.httpClient.put(`${this.baseUrl}/movies`, { name, runTime });
   }

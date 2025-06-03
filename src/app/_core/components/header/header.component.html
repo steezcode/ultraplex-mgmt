@@ -1,10 +1,14 @@
 <nav>
   <h2 routerLink="/">Ultraplex Management</h2>
   <ul>
-    <li><a routerLink="/dashboard">Dashboard</a></li>
-    <li><a routerLink="/cinemas">Cinemas</a></li>
-    <li><a routerLink="/screens">Screens</a></li>
-    <li><a routerLink="/movies">Movies</a></li>
-    <li><a routerLink="/bookings">Bookings</a></li>
+    @for(route of routes; track route) {
+    <li>
+      <a
+        [class.active]="isCurrentRoute(route.path)"
+        [routerLink]="route.path"
+        >{{ route.name }}</a
+      >
+    </li>
+    }
   </ul>
 </nav>

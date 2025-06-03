@@ -1,11 +1,16 @@
+:host {
+  width: 100%;
+  max-width: 500px;
+}
+
 .cinema-card {
-  width: 500px;
   display: block;
   margin: auto;
   background-color: var(--primary-color);
   border-radius: 4px;
   box-shadow: var(--box-shadow);
   padding: 2rem 3rem;
+  text-align: center;
 }
 
 .cinema-card .name {

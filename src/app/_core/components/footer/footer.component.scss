@@ -5,3 +5,22 @@ footer {
   gap: 30px;
   justify-content: center;
 }
+
+footer p {
+  color: var(--white-color);
+}
+
+footer a {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+  }
+}

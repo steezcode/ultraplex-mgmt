@@ -1,0 +1,17 @@
+<div class="screen-card" (click)="isExpanded = !isExpanded">
+  <div class="screen-card-header">
+    <h3 class="name">{{ cinemaData.name }}</h3>
+    <img class="chevron" src="assets/icons/next.png" />
+  </div>
+
+  @if (isExpanded) {
+  <div class="screens-list">
+    @if(cinemaData.screens && cinemaData.screens.length > 0) { @for (screen of
+    cinemaData.screens; track screen.id) {
+    <p class="screen-name">{{ screen.name }}</p>
+    } }@else {
+    <p class="no-screens">No screens available</p>
+    }
+  </div>
+  }
+</div>

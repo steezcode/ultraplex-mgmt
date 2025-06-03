@@ -1,1 +1,13 @@
-<p>screens-listing works!</p>
+<div class="screens-listing-header">
+  <h1>Screens</h1>
+</div>
+
+@if(vm$ | async; as vm) {
+<div class="screens-wrapper">
+  @for(cinema of vm.cinemas; track cinema.id) {
+  <app-screen-card [cinemaData]="cinema"></app-screen-card>
+  }
+</div>
+} @else {
+<p>Loading screens...</p>
+}

@@ -1,0 +1,42 @@
+.screen-card {
+  width: 500px;
+  display: block;
+  margin: auto;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  box-shadow: var(--box-shadow);
+  padding: 2rem 3rem;
+  cursor: pointer;
+}
+
+.screen-card .screens-list {
+  margin-top: 2rem;
+}
+
+.screen-card .name,
+.screen-card .screens,
+.screen-card .available-screens,
+.screen-card .screen-name,
+.screen-card .no-screens {
+  color: var(--white-color);
+}
+
+.screen-card .screen-name {
+  margin-bottom: 0.5rem;
+}
+
+.screen-card .available-screens {
+  margin-bottom: 1rem;
+}
+
+.screen-card .screen-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.screen-card .screen-card-header .chevron {
+  height: 25px;
+  rotate: 90deg;
+  filter: invert(1) brightness(2);
+}

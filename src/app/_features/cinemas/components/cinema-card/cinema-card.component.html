@@ -1,15 +1,3 @@
 <div class="cinema-card">
   <h3 class="name">{{ cinemaData.name }}</h3>
-
-  <p class="screens-list">
-    @if(cinemaData.screens && cinemaData.screens.length > 0) {
-      Available Screens:
-        @for (screen of cinemaData.screens; track screen.id) {
-        <p class="screen-name">{{ screen.name }}</p>
-        }
-    }@else {
-    <p class="">No screens available</p>
-    } 
-  </p>
-    
 </div>

@@ -1,1 +1,18 @@
-<p>movies-listing works!</p>
+<div class="movies-listing-header">
+  <h1>Movies</h1>
+  <button (click)="movieModalOpened = true">Add a movie</button>
+</div>
+
+@if(vm$ | async; as vm) {
+<div class="movies-wrapper">
+  @for(movie of vm.movies; track movie.id) {
+  <app-movie-card [movieData]="movie"></app-movie-card>
+  }
+</div>
+} @else {
+<p>Loading movies...</p>
+} @if(movieModalOpened) {
+<app-add-movie-modal
+  (closeModal)="movieModalOpened = false"
+></app-add-movie-modal>
+}

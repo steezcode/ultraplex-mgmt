@@ -11,3 +11,11 @@ button {
 button:hover {
   background-color: var(--secondary-color);
 }
+
+button:disabled {
+  opacity: 0.5;
+}
+
+button:disabled:hover {
+  background-color: var(--primary-color);
+}

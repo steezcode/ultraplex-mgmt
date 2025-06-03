@@ -1,0 +1,18 @@
+.movie-card {
+  width: 500px;
+  display: block;
+  margin: auto;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  box-shadow: var(--box-shadow);
+  padding: 2rem 3rem;
+}
+
+.movie-card .name {
+  margin-bottom: 1rem;
+}
+
+.movie-card .name,
+.movie-card .runtime {
+  color: var(--white-color);
+}

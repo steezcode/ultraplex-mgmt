@@ -1,0 +1,29 @@
+<div class="overlay">
+  <dialog class="add-movie-modal">
+    <div class="header">
+      <h2>Add a movie</h2>
+      <button type="button" class="close-cta" (click)="onClose()">X</button>
+    </div>
+
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="name">Run time</label>
+        <input
+          type="number"
+          id="name"
+          formControlName="runTime"
+          type="text"
+          maxlength="3"
+          required
+        />
+      </div>
+
+      <button [disabled]="movieForm.invalid" type="submit">Add movie</button>
+    </form>
+  </dialog>
+</div>

@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { coreFeatureKey, CoreState } from './core.reducer';
-import { cinemasEntityAdapter } from './core.adapters';
+import { cinemasEntityAdapter, moviesEntityAdapter } from './core.adapters';
 import { CinemaData } from '../models/core.models';
 
 export const selectCoreState = createFeatureSelector<CoreState>(coreFeatureKey);
@@ -20,16 +20,6 @@ const selectBookingsState = createSelector(
   (state) => state.bookings
 );
 
-const { selectAll } = cinemasEntityAdapter.getSelectors();
-
-export const selectAllCinemas = createSelector(selectCinemasState, selectAll);
-
-export const selectTotalNumberOfScreens = createSelector(
-  selectAllCinemas,
-  (cinemas: CinemaData[]) =>
-    cinemas.reduce((total, cinema) => total + cinema.screens.length, 0)
-);
-
 export const selectNumberOfCinemas = createSelector(
   selectCinemasState,
   (cinemaState) => cinemaState.ids.length
@@ -43,4 +33,26 @@ export const selectNumberOfMovies = createSelector(
 export const selectNumberOfBookings = createSelector(
   selectBookingsState,
   (bookingsState) => bookingsState.ids.length
+);
+
+const { selectAll: selectAllCinemasFromAdapter } =
+  cinemasEntityAdapter.getSelectors();
+
+export const selectAllCinemas = createSelector(
+  selectCinemasState,
+  selectAllCinemasFromAdapter
+);
+
+export const selectTotalNumberOfScreens = createSelector(
+  selectAllCinemas,
+  (cinemas: CinemaData[]) =>
+    cinemas.reduce((total, cinema) => total + cinema.screens.length, 0)
+);
+
+const { selectAll: selectAllMoviesFromAdapter } =
+  moviesEntityAdapter.getSelectors();
+
+export const selectAllMovies = createSelector(
+  selectMoviesState,
+  selectAllMoviesFromAdapter
 );

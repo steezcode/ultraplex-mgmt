@@ -45,3 +45,15 @@ export const addCinemaFailure = createAction(
   '[Core] Add Cinema Failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const addMovie = createAction(
+  '[Core] Add Movie',
+  props<{ name: string; runTime: string }>()
+);
+
+export const addMovieSuccess = createAction('[Core] Add Movie Success');
+
+export const addMovieFailure = createAction(
+  '[Core] Add Movie Failure',
+  props<{ error: HttpErrorResponse }>()
+);

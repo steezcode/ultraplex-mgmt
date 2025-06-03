@@ -19,14 +19,18 @@ import { Actions, ofType } from '@ngrx/effects';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-add-cinema-modal',
+  selector: 'app-add-movie-modal',
   imports: [ReactiveFormsModule, FormsModule],
-  templateUrl: './add-cinema-modal.component.html',
-  styleUrl: './add-cinema-modal.component.scss',
+  templateUrl: './add-movie-modal.component.html',
+  styleUrl: './add-movie-modal.component.scss',
 })
-export class AddCinemaModalComponent {
-  cinemaForm: FormGroup = new FormGroup({
+export class AddMovieModalComponent {
+  movieForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
+    runTime: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d{1,3}$/),
+    ]),
   });
 
   destroyRef: DestroyRef = inject(DestroyRef);
@@ -36,12 +40,14 @@ export class AddCinemaModalComponent {
 
   onSubmit() {
     this.store.dispatch(
-      CoreActions.addCinema({ name: this.cinemaForm.value.name })
+      CoreActions.addMovie({
+        name: this.movieForm.value.name,
+        runTime: this.movieForm.value.runTime,
+      })
     );
-
     this.actions$
       .pipe(
-        ofType(CoreActions.addCinemaSuccess),
+        ofType(CoreActions.addMovieSuccess),
         takeUntilDestroyed(this.destroyRef)
       )
       .subscribe(() => {

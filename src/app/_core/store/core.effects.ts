@@ -31,7 +31,7 @@ export class CoreEffects {
 
   retrieveMovies$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
-      ofType(CoreActions.retrieveCoreData),
+      ofType(CoreActions.retrieveCoreData, CoreActions.addMovieSuccess),
       switchMap(() => {
         return this.apiHttpService.getMovies().pipe(
           switchMap((movies) => [
@@ -72,6 +72,18 @@ export class CoreEffects {
           catchError((error) => [
             CoreActions.retrieveCinemasFailure({ error: error }),
           ])
+        );
+      })
+    )
+  );
+
+  addMovie$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CoreActions.addMovie),
+      switchMap((action) => {
+        return this.apiHttpService.addMovie(action.name, action.runTime).pipe(
+          switchMap(() => [CoreActions.addMovieSuccess()]),
+          catchError((error) => [CoreActions.addMovieFailure({ error: error })])
         );
       })
     )

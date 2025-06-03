@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { BookingData, CinemaData, MovieData } from '../models/core.models';
+import { ScreeningPayload } from '../../_api/models/api.interface';
 
 export const retrieveCoreData = createAction('[Core] Retrieve Core Data');
 
@@ -55,5 +56,17 @@ export const addMovieSuccess = createAction('[Core] Add Movie Success');
 
 export const addMovieFailure = createAction(
   '[Core] Add Movie Failure',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const addScreening = createAction(
+  '[Core] Add Screening',
+  props<{ cinemaId: string; screenId: string; payload: ScreeningPayload }>()
+);
+
+export const addScreeningSuccess = createAction('[Core] Add Screening Success');
+
+export const addScreeningFailure = createAction(
+  '[Core] Add Screening Failure',
   props<{ error: HttpErrorResponse }>()
 );

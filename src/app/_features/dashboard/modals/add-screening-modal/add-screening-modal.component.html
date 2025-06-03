@@ -1,0 +1,66 @@
+<div class="overlay">
+  <dialog class="add-cinema-modal">
+    <div class="header">
+      <h2>Add a screening</h2>
+      <button type="button" class="close-cta" (click)="onClose()">X</button>
+    </div>
+
+    <form [formGroup]="screeningForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="cinema">Cinema</label>
+        <select
+          (change)="cinemaSelected($event)"
+          id="cinema"
+          formControlName="cinema"
+          type="text"
+          required
+        >
+          <option value="" disabled selected>Select a cinema</option>
+          @for (cinema of cinemas; track cinema.id) {
+          <option [value]="cinema.id">
+            {{ cinema.name }}
+          </option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="screen">Screen</label>
+        <select id="screen" formControlName="screen" type="text" required>
+          <option value="" disabled selected>Select a screen</option>
+          @for(screen of screensForSelectedCinema; track screen.id) {
+          <option [value]="screen.id">
+            {{ screen.name }}
+          </option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="movie">Movie</label>
+        <select id="movie" formControlName="movie" type="text" required>
+          <option value="" disabled selected>Select a screen</option>
+          @for (movie of movies; track movie.id) {
+          <option [value]="movie.id">
+            {{ movie.name }}
+          </option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="startTime">Start time</label>
+        <input
+          id="startTime"
+          formControlName="startTime"
+          type="time"
+          required
+        />
+      </div>
+
+      <button [disabled]="screeningForm.invalid" type="submit">
+        Add screening
+      </button>
+    </form>
+  </dialog>
+</div>

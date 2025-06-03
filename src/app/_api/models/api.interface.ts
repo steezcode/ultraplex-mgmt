@@ -30,3 +30,8 @@ export interface Booking {
   screenId: number;
   seat: number;
 }
+
+export interface ScreeningPayload {
+  movieId: number;
+  startTime: Date;
+}

@@ -1,6 +1,9 @@
-<h1>Welcome back!</h1>
+<div class="dashboard-listing-header">
+  <h1>Welcome back!</h1>
+  <button (click)="screeningModalOpened = true">Add a screening</button>
+</div>
 
-@if(cards) {
+@if(vm$ | async; as vm) { @if(cards) {
 <div class="dashboard-container">
   @for(card of cards; track card.title) {
   <app-dashboard-card [data]="card"></app-dashboard-card>
@@ -8,4 +11,10 @@
 </div>
 } @else {
 <p>Loading dashboard...</p>
-}
+} @if(screeningModalOpened) {
+<app-add-screening-modal
+  [cinemas]="vm.cinemas"
+  [movies]="vm.movies"
+  (closeModal)="screeningModalOpened = false"
+></app-add-screening-modal>
+} }

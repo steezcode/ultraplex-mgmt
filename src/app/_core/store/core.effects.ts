@@ -88,4 +88,20 @@ export class CoreEffects {
       })
     )
   );
+
+  addScreening$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CoreActions.addScreening),
+      switchMap((action) => {
+        return this.apiHttpService
+          .addScreening(action.cinemaId, action.screenId, action.payload)
+          .pipe(
+            switchMap(() => [CoreActions.addScreeningSuccess()]),
+            catchError((error) => [
+              CoreActions.addScreeningFailure({ error: error }),
+            ])
+          );
+      })
+    )
+  );
 }

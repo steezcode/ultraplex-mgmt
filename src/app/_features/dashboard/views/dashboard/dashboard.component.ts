@@ -9,10 +9,12 @@ import {
   selectDashboardViewModel,
 } from './dashboard.selector';
 import { Store } from '@ngrx/store';
+import { AddScreeningModalComponent } from '../../modals/add-screening-modal/add-screening-modal.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [DashboardCardComponent],
+  imports: [DashboardCardComponent, AddScreeningModalComponent, AsyncPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -40,6 +42,8 @@ export class DashboardComponent {
       route: '/bookings',
     },
   ];
+
+  screeningModalOpened: boolean = false;
 
   constructor(private store: Store) {
     this.vm$ = this.store.select(selectDashboardViewModel);

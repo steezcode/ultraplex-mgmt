@@ -5,6 +5,7 @@ import {
   BookingResponse,
   CinemasResponse,
   MoviesResponse,
+  ScreeningPayload,
 } from './models/api.interface';
 
 @Injectable({
@@ -37,5 +38,17 @@ export class ApiHttpService {
 
   addMovie(name: string, runTime: string): Observable<any> {
     return this.httpClient.put(`${this.baseUrl}/movies`, { name, runTime });
+  }
+
+  addScreening(
+    cinemaId: string,
+    screenId: string,
+    payload: ScreeningPayload
+  ): Observable<any> {
+    console.log(payload);
+    return this.httpClient.put(
+      `${this.baseUrl}/cinemas/${cinemaId}/screens/${screenId}/screenings`,
+      payload
+    );
   }
 }
